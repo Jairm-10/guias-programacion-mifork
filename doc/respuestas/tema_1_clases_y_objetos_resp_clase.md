@@ -51,7 +51,11 @@ Por favor, escribe en impersonal las respuestas.
 
 ## 6. ¿Dónde se almacenan en memoria los objetos? ¿Es igual en todos los lenguajes? ¿Qué es la **recolección de basura**? 
 
-### Nos la saltamos
+### Se almacenan en el Heap, en la mayoría de lenguajes. Otros permiten Heap y Stack.
+### Ventajas:
+###     -Reservo dinámicamente, el tamaño se decide en ejecución (hace que mi programa reserve justo lo que se va a necesitar).
+###     -Lo que está en el Heap, vive más allá que el método o función donde se ha creado.
+
 
 
 ## 7. ¿Qué es un método? ¿Qué es la **sobrecarga de métodos**? 
@@ -59,23 +63,23 @@ Por favor, escribe en impersonal las respuestas.
 ### Método: Funciones que defino dentro de una clase, es decir, las funciones que un objeto puede hacer.
 ### Sobrecarga de método: La posibilidad de crear métodos dentro de una clase con el mismo nombre, pero cambiando el tipo y/o número de sus parámetros.
 
-class Calculadora {
-    // sin estado
-    int sumar(int a, int b){
-        return a + b;
-    }
-    
-    double sumar(double a, double b) {
-        return a + b;
-    }
-}
-
-main() {
-    Calculadora miCalculadora = new Calculadora();
-
-    int suma1 = miCalculadora.sumar(4, 6);
-    double suma2 = miCalculadora.sumar(4.6, 6.7);
-}
+#### class Calculadora {
+####    // sin estado
+####    int sumar(int a, int b){
+####        return a + b;
+####    }
+####    
+####    double sumar(double a, double b) {
+####        return a + b;
+####    }
+#### }
+####
+#### main() {
+####    Calculadora miCalculadora = new Calculadora();
+####
+####    int suma1 = miCalculadora.sumar(4, 6);
+####    double suma2 = miCalculadora.sumar(4.6, 6.7);
+#### }
 
 
 ## 8. Ejemplo mínimo de clase en Java, que se llame Punto, con dos atributos, x e y, con un método que se llame `calculaDistanciaAOrigen`, que calcule la distancia a la posición 0,0. Por sencillez, los atributos deben tener visibilidad por defecto. Crea además un ejemplo de uso con una instancia y uso del método
