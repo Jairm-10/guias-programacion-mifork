@@ -178,24 +178,67 @@ Por favor, escribe en impersonal las respuestas.
 
 ## 19. ¿La clase `String` en Java es mutable o inmutable? ¿Qué ocurre al concatenar dos cadenas? ¿Qué debemos hacer si vamos a hacer una operación que implique concatenar muchas veces para construir paso a paso una cadena muy larga?
 
-### String es inmutable
-
+### Si, String es inmutable
+### No voy a encontrar en un objeto String ningún método que me permita cambiar el valor del String.
+### Substring no modifica, devuelve una nueva cadena
+#### String elTitulo = libro.getTitulo();
+#### elTitulo.substring(0,7);
+#### elTitulo.append("mas texto");
+### StringBuilder 
 
 ## 20. En POO ¿Cómo se comparan objetos de una misma clase? ¿Por su contenido o por su identidad? ¿Qué es el método equals en Java? ¿Qué hace por defecto? ¿Cómo se deben comparar dos cadenas en Java? 
 
-### Respuesta
-
+### COMPARANDO OBJETOS, 2 maneras:
+### - Por identidad: Mismo objeto en memoria. Con == (comparación por identidad) -> if (obj1 == obj2)
+### - Por contenido: Mismo estado (valor de sus atributos). Con equals -> if (obj1.equals(obj2)) -> Nos devuelve TRUE o FALSE
+### MÉTODOS EQUALS: Pensado para que se haga una comparación por contenido, pero tenemos que asegurarnos
+### EJEMPLO CLÁSICO
+#### string s1 = new String("hola");
+#### string s2 = new String("hola");
+#### if (s1=s2) -> Devuelve FALSE (porque apuntan a distinto objeto)
+#### if (s1.equals(s2)) -> Devuelve TRUE (porque tienen el mismo contenido)
+####
+### equals: Por defecto hace comparación por identidad(==), excepto en clases
+### concretas donde se implementa una comparación por contenido, por ejemplo en String.
 
 ## 21. ¿Qué son las clases "wrapper" en un lenguaje de programación orientado a objetos? ¿Cómo se hace? ¿Es un proceso automático? ¿Qué ventajas tienen? ¿Todos los lenguajes orientados a objetos tienen tipos primitivos y necesitan wrappers? 
 
-### Respuesta
-
+### "Wrapper"
+### - Ocurren en lenguajes que tienen tipos primitivos, por ej. Java.
+### - Otros lenguajes no tienen tipos primitivos, como Python.
+### int <-> Integer
+### float <-> Float
+### char <-> Character
+### Ventajas:
+### - Añadirle comportamiento
+### - Poder usarlos en contextos donde se necesitan Objetos.
+### List <T>
+### Autoboxing/Unboxing
+### Integer i = 7; // Autoboxing (Esto es/Se produce):
+### Integer i = new Integer(7);
+### int j = i; //Unboxing (Esto es/Se produce):
+### int j = i.intValue();
 
 ## 22. ¿En POO qué es un **tipo de dato enumerado**? ¿En Java, un tipo de dato enumerado es una clase? ¿Qué ventajas tienen en términos de encapsulación los enumerados en Java?
 
-### Respuesta
+### Enumerado es un tipo con un número determinado de valores posibles.
+### En Java un enumerado es UNA CLASE, cuyas instancias son
+### finitas, conocidas de antemano, y tiene un nombre cada una (valor del enumerado)
 
+#### public enum TipoIVA{
+####    GENERAL(1.21), REDUCIDO(1.1);
+#### }
+#### -> private double factor;
+#### public double aplicar (double cant){
+####    return switch(this){                        -
+####        case GENERAL -> return cant * 1.21;     -> Todo esto se cambia por: return cant *  this.factor;
+####        case REDUCIDO -> return cant * 1.1;     -
+####    }
+#### -> private TipoIVA(double factor){
+####    this.factor = factor;
+#### }
+#### }
 
 ## 23. Crea un tipo enumerado en Java que se llame `Mes`, con doce posibles instancias y que además proporcione métodos para obtener cuántos días tiene ese mes, el ordinal de ese mes en el año (1-12), empleando atributos privados y constructores del tipo enumerado. Añade además cuatro métodos para devolver si ese mes tiene algunos días de invierno, primavera, verano u otoño, indicando con un booleano el hemisferio (norte o sur, parámetro `enHemisferioNorte`). Es decir: `esDePrimavera(boolean esHemisferioNorte)`, `esDeVerano(boolean esHemisferioNorte)`, `esDeOtoño(boolean esHemisferioNorte)`, `esDeInvierno(boolean esHemisferioNorte)`
 
-### Respuesta
+### Respuest
